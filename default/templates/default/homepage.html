@@ -1,0 +1,104 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <style>
+            body {
+                overflow-x: hidden;
+            }
+    
+            .sliding-container {
+                width: 100%;
+                overflow: hidden;
+            }
+    
+            .event-container {
+                width: 100%;
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+    
+            .event-card {
+                min-width: 100%;
+                box-sizing: border-box;
+                padding: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-right: 15px;
+                background-color: #f8f8f8;
+            }
+        </style>
+    </head>
+<body>
+
+    {% include "default/navbar.html" %} 
+
+    <!-- Page Content -->
+    <div class="sliding-container">
+        <div class="event-container">
+            {% for event in latest_events %}
+                <div class="event-card">
+                    <h2><a >{{ event.title }}</a></h2>
+                    <br>
+                    <p>Description:{{ event.description }}</p>
+                    <p>Location: {{ event.location }}</p>
+                    <p>Start Date: {{ event.start_date }}</p>
+                    <p>End Date: {{ event.end_date }}</p>
+                    <p>Fundraising Goal: ${{ event.fundraising_goal }}</p>
+                    <p>Current Amount: ${{ event.current_amount }}</p>
+                    <button>View Details</button>
+                </div>
+                
+            {% endfor %}
+        </div>
+    </div>
+    <div class="nav-buttons">
+        <button id="prevButton" onclick="showPrevEvent()">Previous</button>
+        <button id="nextButton" onclick="showNextEvent()">Next</button>
+    </div>
+    <!-- Page Content End -->
+
+    {% include "default/footer.html" %}
+
+    <!-- Start Script -->
+    <script src="{% static 'assets/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/templatemo.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script>
+        let currentIndex = 0;
+        const eventContainer = document.querySelector('.event-container');
+        const eventCards = document.querySelectorAll('.event-card');
+        const totalEvents = eventCards.length;
+    
+        function showNextEvent() {
+            currentIndex = (currentIndex + 1) % totalEvents;
+            updateEventContainer();
+        }
+    
+        function showPrevEvent() {
+            currentIndex = (currentIndex - 1 + totalEvents) % totalEvents;
+            updateEventContainer();
+        }
+    
+        function updateEventContainer() {
+            const translateXValue = -currentIndex * 100 + '%';
+            eventContainer.style.transform = 'translateX(' + translateXValue + ')';
+        }
+    
+        // You can use event listeners or other triggers to call these functions.
+        // For example, you can use setInterval for automatic sliding.
+    
+        // Example with buttons:
+        // document.getElementById('nextButton').addEventListener('click', showNextEvent);
+        // document.getElementById('prevButton').addEventListener('click', showPrevEvent);
+    </script>
+    <!-- End Script -->
+</body>
+
+</html>
+

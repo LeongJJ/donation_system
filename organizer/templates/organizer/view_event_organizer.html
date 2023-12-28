@@ -1,0 +1,84 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Fundraising Events</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-icons.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-topic-listing.css' %}">
+    <!--
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.min.css' %}">
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+
+-->
+</head>
+
+<body>
+
+    {% include "organizer/navbar.html" %}
+
+    <!-- Page Content -->
+    <h1>Fundraising Events</h1>
+
+    {% for event in all_events %}
+    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+        <div class="custom-block bg-white shadow-lg">
+            <a>
+                <div class="d-flex">
+                    <div>
+                        <!-- <h2><a href="{% url 'organizer:event_detail' event.id %}">{{ event.title }}</a></h2> -->
+
+                        <h2><a>{{ event.title }}</a></h2>
+                        <br>
+                        <p>Description:{{ event.description }}</p>
+                        <p>Location: {{ event.location }}</p>
+                        <p>Start Date: {{ event.start_date }}</p>
+                        <p>End Date: {{ event.end_date }}</p>
+                        <p>Fundraising Goal: ${{ event.fundraising_goal }}</p>
+                        <p>Current Amount: ${{ event.current_amount }}</p>
+                        <p>Created on: {{ event.created_date }}</p>
+                        <button>Donate</button>
+                    </div>
+
+                    <span class="badge bg-design rounded-pill ms-auto">14</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br><br>
+    {% endfor %}
+    <!-- Page Content End -->
+
+    {% include "default/footer.html" %}
+
+    <!-- Start Script -->
+    <script src="{% static 'assets/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/templatemo.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <!-- End Script -->
+</body>
+
+</html>

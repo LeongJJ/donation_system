@@ -1,0 +1,121 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JJ Donation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="{% static 'assets/img/apple-icon.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.min.css' %}">
+
+</head>
+
+<body>
+    {% include "default/navbar.html" %} 
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            {% if user.profile_image %}
+            <div class="col-md-3 border-right">
+                <img src="{{ user.profile_image.url }}" alt="Profile Image" style="max-width: 200px; max-height: 200px;">
+            </div>
+            {% endif %}
+
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Personal Profile</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Username</label><input type="text" id="field1" class="form-control" placeholder="{{user.username}}" value="" readonly></div>
+                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" id="field3" class="form-control" placeholder="{{user.contact_number}}" value="" readonly></div>                        
+                        <div class="col-md-12"><label class="labels">Birth Date</label><input type="text" id="field5" class="form-control" placeholder="{{user.birthdate}}" value="" readonly></div>
+                        <div class="col-md-12"><label class="labels">Gender</label><input type="text" id="field6" class="form-control" placeholder="{{user.gender}}" value="" readonly></div>
+                        <div class="col-md-12"><label class="labels">Email Address</label><input type="text" id="field7" class="form-control" placeholder="{{user.email}}" value="" readonly></div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary profile-button" id="editprofile" type="button" onclick="editProfile()">Edit Profile</button>
+                        <button class="btn btn-primary profile-button" id="saveprofile" style="visibility:hidden" type="button" onclick="saveProfile()">Save Profile</button>
+                    </div>       
+                </div>
+            </div>
+            <div class="col-md-4">
+            
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    {% include "default/footer.html" %}
+
+    <!-- Start Script -->
+    <script src="{% static 'assets/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/templatemo.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script>
+        function editProfile() {
+            document.getElementById("field1").readOnly = false;
+            document.getElementById("field2").readOnly = false;
+            document.getElementById("field3").readOnly = false;
+            document.getElementById("field4").readOnly = false;
+            document.getElementById("field5").readOnly = false;
+            document.getElementById("field6").readOnly = false;
+            document.getElementById("field7").readOnly = false;
+            document.getElementById("editprofile").style.visibility = 'hidden';
+            document.getElementById("saveprofile").style.visibility = 'visible';
+
+}
+    </script>
+    <script>
+        function saveProfile() {
+            document.getElementById("field1").readOnly = true;
+            document.getElementById("field2").readOnly = true;
+            document.getElementById("field3").readOnly = true;
+            document.getElementById("field4").readOnly = true;
+            document.getElementById("field5").readOnly = true;
+            document.getElementById("field6").readOnly = true;
+            document.getElementById("field7").readOnly = true;
+
+            document.getElementById("editprofile").style.visibility = 'visible';
+            document.getElementById("saveprofile").style.visibility = 'hidden';
+
+}
+    </script>
+    <!-- End Script -->
+</body>
+</html>
+

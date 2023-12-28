@@ -1,0 +1,114 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Event Registration</title>
+  </head>
+<body>
+
+    {% include "default/navbar.html" %}
+
+    <!-- Page Content -->
+
+    {% block content %}
+    <div class="content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6 contents">
+              <div class="row justify-content-center">
+                <div class="col-md-12">
+                  <div class="form-block">
+                      <div class="mb-4">
+                          <h1>Event Registration</h1>
+                    </div>
+                    <form  method="post">
+                        {% csrf_token %}
+                      <div class="form-group first">
+                        <label for="title">Title:</label>
+                        <br>
+                        <br>
+                          {{ form.title }}
+                      </div>
+                      <br>
+                      <div class="form-group first">
+                        <label for="description">Description:</label>
+                        <br>
+                        <br>
+                          {{ form.description}}
+                      </div>
+                      <br>
+                      <div class="form-group last mb-4">
+                        <label for="location">Location:</label>
+                        <br>
+                        <br>
+                          {{ form.location }}
+                      </div>
+                      <br>
+                      <div class="form-group last mb-4">
+                        <label for="start_date">Start Date:</label>
+                        <br>
+                        <br>
+                          {{ form.start_date }}
+                      </div>
+                      <br>
+                      <div class="form-group last mb-4">
+                        <label for="end_date">End Date:</label>
+                        <br>
+                        <br>
+                          {{ form.end_date }}
+                      </div>
+                      <br>
+                      <div class="form-group last mb-4">
+                        <label for="fundraising_goal">Fundraising_goal:</label>
+                        <br>
+                        <br>
+                          {{ form.fundraising_goal }}
+                      </div>
+                        <span class="text-error">{{ form.errors }}</span>
+                      <input type="submit" class="btn btn-pill text-white btn-block btn-primary">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    
+    
+        
+    {% endblock %}
+    <!-- Page Content End -->
+
+    {% include "default/footer.html" %}
+
+    <!-- Start Script -->
+    <script src="{% static 'assets/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/templatemo.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+    <!-- End Script -->
+</body>
+
+</html>

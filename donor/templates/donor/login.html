@@ -1,0 +1,89 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Donor Login</title>
+  </head>
+<body>
+
+    {% include "default/navbar.html" %}
+
+    <!-- Page Content -->
+
+    {% block content %}
+    <div class="content">
+        <div class="container">
+          <div class="row justify-content-center">
+    
+            <div class="col-md-6 contents">
+              <div class="row justify-content-center">
+                <div class="col-md-12">
+                  <div class="form-block">
+                      <div class="mb-4">
+                    </div>
+                    <div class="text-center ">
+                      <a><strong>Donor Login</strong></a>
+                    </div>
+                  
+                    <form  method="post">
+                        {% csrf_token %}
+                      <div class="form-group first">
+                        <label for="username">Username</label>
+                        <br>
+                        <br>
+                        <input type="text" name="username" required><br>
+                      </div>
+                      
+                      <div class="form-group last mb-4">
+                        <br>
+                        <label for="username">Password</label>
+                        <br>
+                        <input type="password" name="password" required><br>
+                      </div>
+    
+                      <div class="d-flex mb-5 align-items-center">
+                        
+                        <span class="ml-auto"><a href="{% url 'donor:register' %}" class="forgot-pass">Don't have an account?</a></span>
+                      </div>
+    
+                      <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+                    </form>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+    <!-- Page Content End -->
+
+    {% include "default/footer.html" %}
+
+    <!-- Start Script -->
+    <script src="{% static 'assets/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/templatemo.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <!-- End Script -->
+</body>
+
+</html>
